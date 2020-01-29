@@ -16,6 +16,8 @@ There are four playbooks to demonstrate the Ansible Genie collection capabilitie
 	- `pip install -r requirements.txt`
 5. Re-activate the venv
 	- `deactivate && source .venv/bin/activate`
+6. Install Ansible Collection
+	- `ansible-galaxy collection install clay584.genie`
 
 ## Cisco Sandbox
 
