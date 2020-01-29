@@ -54,7 +54,7 @@ diff of what changed with the `vlan` feature.
 This playbook learns the `routing` feature and stores it for use later in the playbook. It then runs a second task to learn it again, this time showing 
 the ability to disable all of the default key exclusions in genie, and let the user specify their own list of keys to exclude from the diff. The output 
 of the playbook shows that nothing changed with the `routing` feature between the two `learn_genie` tasks that were run. If you edit the playbook and comment 
-out the `exclude` parameter, the diff output will show uptime will show up in the diff.
+out the `exclude` parameter, the diff output will show that `uptime` changed.
 
 ### 5.yml
 
