@@ -1,0 +1,27 @@
+---
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  collections:
+   - clay584.genie
+  tasks:
+  - name: Learn Genie - ARP
+    learn_genie:
+      host: "{{ ansible_host }}"
+      port: 8181
+      protocol: ssh
+      username: "{{ username }}"
+      password: "{{ password }}"
+      os: "{{ os }}"
+      feature: arp
+    register: genie_arp1
+
+  - name: Show Genie ARP data structure
+    debug:
+      msg: "{{ genie_arp1 }}"
+
+  - name: Fail if input drops are greater than zero
+    fail:
+      msg: "Input Drops: {{ genie_arp1.genie.arp.statistics.in_drops }}"
+    when: genie_arp1.genie.arp.statistics.in_drops > 0

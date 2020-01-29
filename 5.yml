@@ -1,0 +1,27 @@
+---
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  collections:
+    - clay584.genie
+  vars:
+    out_iosxe: |
+      NAME: "Chassis", DESCR: "Cisco CSR1000V Chassis"
+      PID: CSR1000V          , VID: V00  , SN: 95G6BQT00TI
+
+      NAME: "module R0", DESCR: "Cisco CSR1000V Route Processor"
+      PID: CSR1000V          , VID: V00  , SN: JAB1303001C
+
+      NAME: "module F0", DESCR: "Cisco CSR1000V Embedded Services Processor"
+      PID: CSR1000V          , VID:      , SN:
+
+  tasks:
+    - name: Show Raw CLI Output
+      debug:
+        msg: "{{ out_iosxe }}"
+
+    - name: Show Data Structure After Parsing
+      debug:
+        msg: "{{ out_iosxe | clay584.genie.parse_genie(command='show inventory', os='iosxe') }}"
+

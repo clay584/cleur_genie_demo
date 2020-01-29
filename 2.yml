@@ -1,0 +1,35 @@
+---
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  collections:
+   - clay584.genie
+  tasks:
+  - name: Learn Genie - OSPF
+    learn_genie:
+      host: "{{ ansible_host }}"
+      port: 8181
+      protocol: ssh
+      username: "{{ username }}"
+      password: "{{ password }}"
+      os: "{{ os }}"
+      feature: ospf
+    register: genie_ospf1
+
+  - name: PAUSE - Change OSPF router-id
+    pause:
+      minutes: 2
+
+  - name: Learn Genie - OSPF Again
+    learn_genie:
+      host: "{{ ansible_host }}"
+      port: 8181
+      protocol: ssh
+      username: "{{ username }}"
+      password: "{{ password }}"
+      os: "{{ os }}"
+      feature: ospf
+      compare_to: "{{ genie_ospf1 }}"
+    diff: true
+

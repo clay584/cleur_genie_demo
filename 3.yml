@@ -1,0 +1,35 @@
+---
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  collections:
+   - clay584.genie
+  tasks:
+  - name: Learn Genie - VLAN
+    learn_genie:
+      host: "{{ ansible_host }}"
+      port: 8181
+      protocol: ssh
+      username: "{{ username }}"
+      password: "{{ password }}"
+      os: "{{ os }}"
+      feature: vlan
+    register: genie_vlan1
+
+  - name: PAUSE - Make a modification to VLANs
+    pause:
+      minutes: 2
+
+  - name: Learn Genie - VLANs Again
+    learn_genie:
+      host: "{{ ansible_host }}"
+      port: 8181
+      protocol: ssh
+      username: "{{ username }}"
+      password: "{{ password }}"
+      os: "{{ os }}"
+      feature: vlan
+      compare_to: "{{ genie_vlan1 }}"
+    diff: true
+

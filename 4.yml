@@ -1,0 +1,33 @@
+---
+
+- hosts: all
+  gather_facts: false
+  connection: local
+  collections:
+   - clay584.genie
+  tasks:
+  - name: Learn Genie - ROUTING
+    learn_genie:
+      host: "{{ ansible_host }}"
+      port: 8181
+      protocol: ssh
+      username: "{{ username }}"
+      password: "{{ password }}"
+      os: "{{ os }}"
+      feature: routing
+    register: genie_routing1
+
+  - name: Learn Genie - ROUTING 2nd Run
+    learn_genie:
+      host: "{{ ansible_host }}"
+      port: 8181
+      protocol: ssh
+      username: "{{ username }}"
+      password: "{{ password }}"
+      os: "{{ os }}"
+      feature: routing
+      compare_to: "{{ genie_routing1 }}"
+      no_default_exclusion: true
+      exclude: "{{ ['updated'] }}"
+    diff: true
+
