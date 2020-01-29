@@ -11,11 +11,11 @@ There are four playbooks to demonstrate the Ansible Genie collection capabilitie
 2. Create a virtual environment and activate it with Python 3.4 or newer.
 	- `python3 -m venv .venv`
 3. Activate the venv
-	- `source .venv/bin/activate
+	- `source .venv/bin/activate`
 4. Install the requirements.
-	- `pip install -r requirements.txt
+	- `pip install -r requirements.txt`
 5. Re-activate the venv
-	- `deactivate && source .venv/bin/activate
+	- `deactivate && source .venv/bin/activate`
 
 ## Cisco Sandbox
 
