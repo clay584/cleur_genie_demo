@@ -3,4 +3,5 @@
 username: admin
 password: Admin_1234!
 os: nxos
-
+port: 8181
+protocol: ssh

@@ -9,8 +9,8 @@
   - name: Learn Genie - ROUTING
     learn_genie:
       host: "{{ ansible_host }}"
-      port: 8181
-      protocol: ssh
+      port: "{{ port }}"
+      protocol: "{{ protocol }}"
       username: "{{ username }}"
       password: "{{ password }}"
       os: "{{ os }}"
@@ -20,8 +20,8 @@
   - name: Learn Genie - ROUTING 2nd Run
     learn_genie:
       host: "{{ ansible_host }}"
-      port: 8181
-      protocol: ssh
+      port: "{{ port }}"
+      protocol: "{{ protocol }}"
       username: "{{ username }}"
       password: "{{ password }}"
       os: "{{ os }}"

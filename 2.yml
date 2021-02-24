@@ -9,8 +9,8 @@
   - name: Learn Genie - OSPF
     learn_genie:
       host: "{{ ansible_host }}"
-      port: 8181
-      protocol: ssh
+      port: "{{ port }}"
+      protocol: "{{ protocol }}"
       username: "{{ username }}"
       password: "{{ password }}"
       os: "{{ os }}"
@@ -24,8 +24,8 @@
   - name: Learn Genie - OSPF Again
     learn_genie:
       host: "{{ ansible_host }}"
-      port: 8181
-      protocol: ssh
+      port: "{{ port }}"
+      protocol: "{{ protocol }}"
       username: "{{ username }}"
       password: "{{ password }}"
       os: "{{ os }}"
